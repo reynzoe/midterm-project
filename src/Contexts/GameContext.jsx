@@ -1,22 +1,20 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
-// Create the Game Context
+
 const GameContext = createContext();
 
-// Game Provider Component
 export const GameProvider = ({ children }) => {
     const [gameState, setGameState] = useState({
         playerName: '',
         hp: 100,
+        maxHp: 100,
         inventory: [],
         currentNode: 'start',
         gameStarted: false,
         gameEnded: false,
-        visitedNodes: [], // Track visited nodes to prevent duplicate effects
-        appliedEffects: [] // Track which node effects have been applied
+        appliedEffects: []
     });
 
-    // Load game state from localStorage on mount
     useEffect(() => {
         const savedState = localStorage.getItem('aswangHunterSave');
         if (savedState) {
@@ -36,61 +34,56 @@ export const GameProvider = ({ children }) => {
         }
     }, [gameState]);
 
-    // Game actions
+    /**
+     * Start new game with player name
+     */
     const startGame = useCallback((playerName) => {
         setGameState({
             playerName: playerName || 'Hunter',
             hp: 100,
+            maxHp: 100,
             inventory: [],
             currentNode: 'start',
             gameStarted: true,
             gameEnded: false,
-            visitedNodes: [],
             appliedEffects: []
         });
     }, []);
 
+    /**
+     * Reset game to initial state
+     */
     const resetGame = useCallback(() => {
-        localStorage.removeItem('aswangHunterSave');
         setGameState({
             playerName: '',
             hp: 100,
+            maxHp: 100,
             inventory: [],
             currentNode: 'start',
             gameStarted: false,
             gameEnded: false,
-            visitedNodes: [],
             appliedEffects: []
         });
     }, []);
 
-    const addItem = useCallback((item) => {
-        setGameState(prev => ({
-            ...prev,
-            inventory: [...prev.inventory, item]
-        }));
-    }, []);
-
-    const takeDamage = useCallback((damage) => {
-        setGameState(prev => ({
-            ...prev,
-            hp: Math.max(0, prev.hp - damage)
-        }));
-    }, []);
-
+    /**
+     * Navigate to story node
+     */
     const navigateToNode = useCallback((nodeId) => {
         setGameState(prev => ({
             ...prev,
-            currentNode: nodeId,
-            visitedNodes: [...prev.visitedNodes, prev.currentNode] // Track previous node
+            currentNode: nodeId
         }));
     }, []);
 
+    /**
+     * Apply node effects (items, damage)
+     */
     const applyNodeEffects = useCallback((nodeId, effects) => {
         const effectKey = `${nodeId}_effects`;
 
         setGameState(prev => {
-            // Don't apply effects if already applied for this node
+            // Prevent duplicate effects
             if (prev.appliedEffects.includes(effectKey)) {
                 return prev;
             }
@@ -100,11 +93,12 @@ export const GameProvider = ({ children }) => {
                 appliedEffects: [...prev.appliedEffects, effectKey]
             };
 
-            // Apply effects
+            // Add item if not already in inventory
             if (effects.addItem && !prev.inventory.includes(effects.addItem)) {
                 newState.inventory = [...newState.inventory, effects.addItem];
             }
 
+            // Apply damage
             if (effects.takeDamage) {
                 newState.hp = Math.max(0, newState.hp - effects.takeDamage);
             }
@@ -113,6 +107,9 @@ export const GameProvider = ({ children }) => {
         });
     }, []);
 
+    /**
+     * End current game
+     */
     const endGame = useCallback(() => {
         setGameState(prev => ({
             ...prev,
@@ -120,10 +117,16 @@ export const GameProvider = ({ children }) => {
         }));
     }, []);
 
+    /**
+     * Check if player has item
+     */
     const hasItem = useCallback((item) => {
         return gameState.inventory.includes(item);
     }, [gameState.inventory]);
 
+    /**
+     * Check if player has all items
+     */
     const hasAllItems = useCallback((items) => {
         return items.every(item => gameState.inventory.includes(item));
     }, [gameState.inventory]);
@@ -133,8 +136,6 @@ export const GameProvider = ({ children }) => {
             gameState,
             startGame,
             resetGame,
-            addItem,
-            takeDamage,
             navigateToNode,
             applyNodeEffects,
             endGame,
@@ -146,7 +147,6 @@ export const GameProvider = ({ children }) => {
     );
 };
 
-// Custom hook to use game context
 export const useGame = () => {
     const context = useContext(GameContext);
     if (!context) {

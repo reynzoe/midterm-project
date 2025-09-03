@@ -1,0 +1,101 @@
+/* Game Screen Base */
+.game-screen {
+    background-color: #0d0d0d; /* Very dark background */
+    min-height: 100vh;
+    color: #ff4c4c; /* Bright red text for retro horror feel */
+    font-family: 'Press Start 2P', monospace; /* Pixelated font */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HUD Section */
+.hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #ff4c4c;
+    font-size: 14px;
+}
+
+/* Main Story Box */
+.story-card {
+    background-color: #1a1a1a; /* Dark gray box */
+    border: 4px solid #ff0000; /* Bright red border */
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0px 0px 15px #ff0000; /* Red glow */
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Pixelated effect */
+.story-card, .choice-button {
+    image-rendering: pixelated;
+}
+
+/* Story text */
+.story-text p {
+    margin: 10px 0;
+    color: #f5f5f5; /* Light text inside dark box */
+}
+
+/* Effect message */
+.effect-message {
+    background-color: #330000; /* Dark red background for effects */
+    border: 3px dashed #ff0000; /* Retro dashed border */
+    color: #ff4c4c;
+    margin-bottom: 20px;
+}
+
+/* Choices Container */
+.choices-container {
+    margin-top: 20px;
+}
+
+.choices-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #ff4c4c;
+}
+
+/* Buttons */
+.choice-button {
+    background-color: #0d0d0d;
+    border: 3px solid #ff0000;
+    color: #ff4c4c;
+    padding: 12px 20px;
+    margin: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.choice-button:hover {
+    background-color: #ff0000;
+    color: #0d0d0d;
+    box-shadow: 0px 0px 10px #ff0000;
+}
+
+/* Ending Title */
+.ending-title {
+    font-size: 20px;
+    color: #ff0000;
+    text-shadow: 2px 2px 0px #0d0d0d;
+}
+
+.inventory-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(33, 33, 33, 0.95); /* dark overlay */
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+}

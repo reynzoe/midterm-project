@@ -1,0 +1,66 @@
+/* Retro horror start screen */
+.start-screen {
+    background: url("/startbg.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start; /* align left */
+    align-items: flex-start; /* align top */
+    padding: 2rem; /* spacing */
+}
+
+.start-card {
+    padding: 2rem;
+    max-width: 400px;
+}
+
+/* Title like Resident Evil */
+.start-title {
+    font-size: 6.3rem;          /* bigger */
+    font-weight: 900;         /* bold like RE */
+    color: #ffffff;           /* darker blood red */
+    letter-spacing: 2px;      /* spaced out letters */
+    margin-bottom: 2rem;
+    text-transform: uppercase; /* force ALL CAPS */
+}
+
+/* Input styling */
+.start-input {
+    margin-top: 0.8rem;   /* extra spacing from the label */
+    height: 3rem;
+    padding: 0 0.8rem;
+    text-align: left;
+    font-size: 1rem;
+    background: #000;
+    border: 2px solid #ff0000;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.start-input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+/* Buttons */
+.start-button {
+    background: #000000;
+    border: none;
+    color: #fff;
+    padding: 0.8rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: inherit;
+    width: 100%;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.start-button:hover {
+    background: #910808;
+    color: #000;
+}

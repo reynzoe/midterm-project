@@ -1,21 +1,27 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GameProvider, useGame } from './contexts/GameContext';
-import StartScreen from './components/StartScreen';
-import GameScreen from './components/GameScreen';
+import StartScreen from './components/Game/StartScreen';
+import GameScreen from './components/Game/GameScreen';
 
-// Main content component that uses game state
+/**
+ * Game content component that renders based on game state
+ */
 const GameContent = () => {
     const { gameState } = useGame();
 
+    // Show start screen if game hasn't started
     if (!gameState.gameStarted) {
         return <StartScreen />;
     }
 
+    // Show main game screen
     return <GameScreen />;
 };
 
-// Main App component
+/**
+ * Main App component with game provider
+ */
 const App = () => {
     return (
         <GameProvider>
