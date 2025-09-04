@@ -33,15 +33,15 @@ const GameScreen = () => {
     };
 
     const getEndingTitle = () => {
-        if (!currentStory) return "🎭 THE END 🎭";
+        if (!currentStory) return " THE END ";
 
         const text = currentStory.text.toLowerCase();
 
-        if (text.includes("legend")) return "🌟 LEGENDARY VICTORY! 🌟";
-        if (text.includes("game over")) return "💀 GAME OVER 💀";
-        if (text.includes("coward")) return "🏃 COWARD'S END 🏃";
+        if (text.includes("legend")) return " LEGENDARY VICTORY! ";
+        if (text.includes("game over")) return " GAME OVER ";
+        if (text.includes("coward")) return " COWARD'S END ";
 
-        return "🎭 THE END 🎭";
+        return " THE END ";
     };
 
     if (!currentStory) {
@@ -72,7 +72,7 @@ const GameScreen = () => {
 
             {/* Effect message */}
             {showEffect && (
-                <div className="story-card">
+                <div className="effect-box">
                     <strong>{effectMessage}</strong>
                     <button onClick={hideEffect} className="choice-button">
                         ✖ Close
@@ -94,7 +94,7 @@ const GameScreen = () => {
 
                 {/* Game Choices - only show when typing is complete and game not ended */}
                 {!gameState.gameEnded && currentStory.choices && isTypingComplete && (
-                    <div>
+                    <div className="choices-container fade-in">
                         <h6 className="text-warning mb-3">⚔️ What do you do?</h6>
                         {currentStory.choices.map((choice, index) => (
                             <ChoiceButton
@@ -112,7 +112,7 @@ const GameScreen = () => {
                     <div className="ending-screen">
                         <h3 className="ending-title">{getEndingTitle()}</h3>
                         <button onClick={resetGame} className="choice-button">
-                            🔄 PLAY AGAIN
+                             PLAY AGAIN
                         </button>
                     </div>
                 )}

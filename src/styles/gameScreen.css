@@ -67,11 +67,11 @@
 /* Buttons */
 .choice-button {
     background-color: #0d0d0d;
-    border: 3px solid #ff0000;
+    border: 2px solid #ff0000; /* thinner border */
     color: #ff4c4c;
-    padding: 12px 20px;
-    margin: 5px;
-    font-size: 14px;
+    padding: 6px 12px; /* smaller padding */
+    margin: 4px;
+    font-size: 12px; /* smaller text */
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -80,7 +80,7 @@
 .choice-button:hover {
     background-color: #ff0000;
     color: #0d0d0d;
-    box-shadow: 0px 0px 10px #ff0000;
+    box-shadow: 0px 0px 6px #ff0000; /* smaller glow */
 }
 
 /* Ending Title */
@@ -153,4 +153,5 @@
     background-color: rgba(26, 26, 26, 0.85) !important; /* Semi-transparent version of your #1a1a1a */
     backdrop-filter: blur(1px);
 }
+
 

@@ -4,6 +4,7 @@
 /* HUD container pinned at bottom */
 .hud-container {
     position: fixed;
+    height: 18%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -87,7 +88,7 @@
 .hud-items {
     display: grid;
     grid-template-columns: repeat(5, 50px); /* 5 columns of 50px for item slots */
-    gap: 4px; /* Pixelated gap between items */
+    gap: 10px; /* Pixelated gap between items */
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.7); /* Slightly darker background for the whole inventory grid */
     border: 2px solid #555; /* Blocky border for the inventory area */

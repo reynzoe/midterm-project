@@ -1,5 +1,33 @@
 /* ... existing styles ... */
 
+.story-card {
+    min-height: 150px; /* Adjust based on your dialogue length + choices */
+    transition: all 3s ease-in-out;
+    position: fixed;
+    bottom: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Adjust width as you like */
+    max-width: 800px; /* Prevent it from being too wide */
+    background: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
+    color: white;
+    padding: 20px;
+    border-radius: 15px 15px 0 0; /* Rounded top corners */
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 1000; /* Ensure it stays above other UI */
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
 .story-text {
     position: relative; /* Needed for absolute positioning of skip button */
     min-height: 100px; /* Adjust as needed so content doesn't jump */

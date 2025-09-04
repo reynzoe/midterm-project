@@ -36,7 +36,6 @@ export const useGameEffects = () => {
                 setEffectMessage(message);
                 setShowEffect(true);
                 // Auto-hide after 3 seconds
-                setTimeout(() => setShowEffect(false), 3000);
             }
 
             applyNodeEffects(gameState.currentNode, effects);

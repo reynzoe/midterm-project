@@ -29,7 +29,7 @@ const ChoiceButton = ({ choice, onChoiceClick, disabled = false }) => {
      * Get button style based on choice type
      */
     const getButtonClass = () => {
-        let baseClass = 'btn btn-lg mb-2 w-100';
+        let baseClass = 'btn mb-2';
 
         if (choice.requires || choice.requiresAll) {
             return `${baseClass} btn-success`; // Green for special choices
