@@ -13,8 +13,19 @@ const GameScreen = () => {
     const { currentStory, effectMessage, showEffect, hideEffect } = useGameEffects();
 
     const fullStoryText = currentStory ? currentStory.text.split("\n").join(" ") : '';
-    // Destructure skipTyping from the hook
     const { displayedText, isTypingComplete, skipTyping } = useTypingEffect(fullStoryText, 30);
+
+    const getEndingClass = () => {
+        if (!currentStory) return "ending-default";
+
+        const text = currentStory.text.toLowerCase();
+
+        if (text.includes("legend")) return "ending-legend";
+        if (text.includes("game over")) return "ending-gameover";
+        if (text.includes("coward")) return "ending-coward";
+
+        return "ending-default";
+    };
 
     const handleChoice = (choice) => {
         hideEffect();
@@ -47,8 +58,13 @@ const GameScreen = () => {
         );
     }
 
+    // Apply ending background class when game is ended
+    const gameScreenClass = gameState.gameEnded ?
+        `game-screen ${getEndingClass()}` :
+        "game-screen";
+
     return (
-        <div className="game-screen">
+        <div className={gameScreenClass}>
             {/* HUD */}
             <div className="hud">
                 <PlayerHUD />
@@ -93,7 +109,7 @@ const GameScreen = () => {
 
                 {/* Game Over / Ending - only show when typing is complete */}
                 {gameState.gameEnded && isTypingComplete && (
-                    <div className="text-center">
+                    <div className="ending-screen">
                         <h3 className="ending-title">{getEndingTitle()}</h3>
                         <button onClick={resetGame} className="choice-button">
                             🔄 PLAY AGAIN

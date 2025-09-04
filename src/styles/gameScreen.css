@@ -102,3 +102,55 @@
 
 /* src/styles/gameScreen.css */
 
+/* === Ending Screens with Backgrounds === */
+.ending-screen {
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    color: #f5f5f5;
+    font-size: 16px;
+    box-shadow: 0px 0px 20px #ff0000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.game-screen.ending-legend {
+    background: url("/startbg.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-blend-mode: multiply;
+    background-color: rgba(255, 215, 0, 0.3); /* Gold tint for legend */
+}
+
+.game-screen.ending-gameover {
+    background: url("/startbg.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-blend-mode: multiply;
+    background-color: rgba(255, 0, 0, 0.4); /* Red tint for game over */
+}
+
+.game-screen.ending-coward {
+    background: url("/Coward.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-blend-mode: multiply;
+    background-color: rgba(128, 128, 128, 0.4); /* Gray tint for coward */
+}
+
+.game-screen.ending-default {
+    background: url("/startbg.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+/* Make story cards semi-transparent during endings so background shows through */
+.game-screen.ending-legend .story-card,
+.game-screen.ending-gameover .story-card,
+.game-screen.ending-coward .story-card,
+.game-screen.ending-default .story-card {
+    background-color: rgba(26, 26, 26, 0.85) !important; /* Semi-transparent version of your #1a1a1a */
+    backdrop-filter: blur(1px);
+}
+
