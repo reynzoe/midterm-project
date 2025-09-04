@@ -1,20 +1,20 @@
 // components/GameScreen.js
-import React, { useEffect } from "react"; // <-- Add useEffect here
+import React, { useEffect } from "react";
 import { useGame } from "../../contexts/GameContext";
 import { useGameEffects } from "../../hooks/useGameEffects";
-import useTypingEffect from "../../hooks/useTypingEffect"; // <-- Import the new hook
+import useTypingEffect from "../../hooks/useTypingEffect";
 import PlayerHUD from "../HUD/PlayerHUD";
 import ChoiceButton from "../UI/ChoiceButton";
 import "../../styles/gameScreen.css";
+import "../../styles/dialogueBox.css";
 
 const GameScreen = () => {
     const { gameState, navigateToNode, resetGame } = useGame();
     const { currentStory, effectMessage, showEffect, hideEffect } = useGameEffects();
 
-    // Use the typing effect for the current story text
-    // Combine all paragraphs into a single string for the typing effect
     const fullStoryText = currentStory ? currentStory.text.split("\n").join(" ") : '';
-    const { displayedText, isTypingComplete } = useTypingEffect(fullStoryText, 30); // Adjust speed as needed (e.g., 30ms per char)
+    // Destructure skipTyping from the hook
+    const { displayedText, isTypingComplete, skipTyping } = useTypingEffect(fullStoryText, 30);
 
     const handleChoice = (choice) => {
         hideEffect();
@@ -33,7 +33,6 @@ const GameScreen = () => {
         return "🎭 THE END 🎭";
     };
 
-    // Error screen if story node not found
     if (!currentStory) {
         return (
             <div className="game-screen flex items-center justify-center">
@@ -68,12 +67,17 @@ const GameScreen = () => {
             {/* Story content */}
             <div className="story-card">
                 <div className="story-text">
-                    {/* Display the typing text */}
                     <p>{displayedText}</p>
+                    {/* Skip Button - Only show when typing is not complete */}
+                    {!isTypingComplete && (
+                        <button onClick={skipTyping} className="skip-button">
+                            ▶️ Skip
+                        </button>
+                    )}
                 </div>
 
                 {/* Game Choices - only show when typing is complete and game not ended */}
-                {!gameState.gameEnded && currentStory.choices && isTypingComplete && ( // <-- Add isTypingComplete check
+                {!gameState.gameEnded && currentStory.choices && isTypingComplete && (
                     <div>
                         <h6 className="text-warning mb-3">⚔️ What do you do?</h6>
                         {currentStory.choices.map((choice, index) => (
@@ -88,7 +92,7 @@ const GameScreen = () => {
                 )}
 
                 {/* Game Over / Ending - only show when typing is complete */}
-                {gameState.gameEnded && isTypingComplete && ( // <-- Add isTypingComplete check
+                {gameState.gameEnded && isTypingComplete && (
                     <div className="text-center">
                         <h3 className="ending-title">{getEndingTitle()}</h3>
                         <button onClick={resetGame} className="choice-button">

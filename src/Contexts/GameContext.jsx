@@ -1,5 +1,5 @@
+// src/contexts/GameContext.js
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-
 
 const GameContext = createContext();
 
@@ -10,34 +10,45 @@ export const GameProvider = ({ children }) => {
         maxHp: 100,
         inventory: [],
         currentNode: 'start',
-        gameStarted: false,
-        gameEnded: false,
+        gameStarted: false, // Initial state: not started
+        gameEnded: false,   // Initial state: not ended
         appliedEffects: []
     });
 
+    // Load game state from localStorage only once on component mount
     useEffect(() => {
         const savedState = localStorage.getItem('aswangHunterSave');
         if (savedState) {
             try {
                 const parsedState = JSON.parse(savedState);
+                // If the game was saved in an 'ended' state, we still load it,
+                // but ensure gameStarted remains true so GameScreen can display the ending.
                 setGameState(parsedState);
             } catch (error) {
                 console.error('Error loading saved game:', error);
+                // If there's an error loading, clear the corrupted save
+                localStorage.removeItem('aswangHunterSave');
             }
         }
     }, []);
 
     // Save game state to localStorage whenever it changes
     useEffect(() => {
-        if (gameState.gameStarted) {
+        // Only save if the game has started and is NOT ended
+        // This means we save ongoing games.
+        if (gameState.gameStarted && !gameState.gameEnded) {
             localStorage.setItem('aswangHunterSave', JSON.stringify(gameState));
         }
-    }, [gameState]);
+        // IMPORTANT: We no longer remove the save when gameEnded is true here.
+        // Removal will happen explicitly on startGame or resetGame.
+    }, [gameState]); // Depend on the entire gameState object for changes
 
     /**
      * Start new game with player name
      */
     const startGame = useCallback((playerName) => {
+        // Always clear previous save when starting a new game
+        localStorage.removeItem('aswangHunterSave');
         setGameState({
             playerName: playerName || 'Hunter',
             hp: 100,
@@ -51,16 +62,18 @@ export const GameProvider = ({ children }) => {
     }, []);
 
     /**
-     * Reset game to initial state
+     * Reset game to initial state (e.g., after clicking "PLAY AGAIN")
      */
     const resetGame = useCallback(() => {
+        // Always clear previous save when resetting the game
+        localStorage.removeItem('aswangHunterSave');
         setGameState({
             playerName: '',
             hp: 100,
             maxHp: 100,
             inventory: [],
             currentNode: 'start',
-            gameStarted: false,
+            gameStarted: false, // Back to start screen state
             gameEnded: false,
             appliedEffects: []
         });
@@ -113,7 +126,10 @@ export const GameProvider = ({ children }) => {
     const endGame = useCallback(() => {
         setGameState(prev => ({
             ...prev,
-            gameEnded: true
+            gameEnded: true,
+            // IMPORTANT: gameStarted remains TRUE here.
+            // This allows the App.js to still render GameScreen to show the ending.
+            // localStorage will *not* be cleared until startGame or resetGame is called.
         }));
     }, []);
 

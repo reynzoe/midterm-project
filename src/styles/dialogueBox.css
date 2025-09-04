@@ -1,0 +1,31 @@
+/* ... existing styles ... */
+
+.story-text {
+    position: relative; /* Needed for absolute positioning of skip button */
+    min-height: 100px; /* Adjust as needed so content doesn't jump */
+}
+
+.skip-button {
+    position: absolute;
+    bottom: 10px; /* Adjust position as needed */
+    right: 10px; /* Adjust position as needed */
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.skip-button:hover {
+    opacity: 1;
+    background-color: #777;
+}
+
+/* You might want to adjust the padding/margin of the paragraph if the button overlaps */
+.story-text p {
+    padding-bottom: 30px; /* Make space for the skip button */
+}

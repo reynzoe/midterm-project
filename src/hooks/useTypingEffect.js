@@ -1,7 +1,7 @@
 // hooks/useTypingEffect.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react'; // <-- Add useCallback
 
-const useTypingEffect = (text, speed = 50) => { // Default speed: 50ms per character
+const useTypingEffect = (text, speed = 50) => {
     const [displayedText, setDisplayedText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTypingComplete, setIsTypingComplete] = useState(false);
@@ -28,7 +28,14 @@ const useTypingEffect = (text, speed = 50) => { // Default speed: 50ms per chara
         return () => clearInterval(interval);
     }, [text, currentIndex, speed, isTypingComplete]);
 
-    return { displayedText, isTypingComplete };
+    // New function to skip the typing animation
+    const skipTyping = useCallback(() => {
+        setDisplayedText(text);
+        setIsTypingComplete(true);
+        setCurrentIndex(text.length); // Ensure currentIndex is also updated
+    }, [text]);
+
+    return { displayedText, isTypingComplete, skipTyping }; // <-- Return skipTyping
 };
 
 export default useTypingEffect;
