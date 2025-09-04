@@ -8,7 +8,7 @@ export const GameProvider = ({ children }) => {
         playerName: '',
         hp: 100,
         maxHp: 100,
-        inventory: [],
+        inventory: ["Bolo"],
         currentNode: 'start',
         gameStarted: false, // Initial state: not started
         gameEnded: false,   // Initial state: not ended
@@ -53,7 +53,7 @@ export const GameProvider = ({ children }) => {
             playerName: playerName || 'Hunter',
             hp: 100,
             maxHp: 100,
-            inventory: [],
+            inventory: ["Bolo"],
             currentNode: 'start',
             gameStarted: true,
             gameEnded: false,
@@ -71,7 +71,7 @@ export const GameProvider = ({ children }) => {
             playerName: '',
             hp: 100,
             maxHp: 100,
-            inventory: [],
+            inventory: ["Bolo"],
             currentNode: 'start',
             gameStarted: false, // Back to start screen state
             gameEnded: false,

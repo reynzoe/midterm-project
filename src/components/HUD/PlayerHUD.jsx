@@ -6,10 +6,7 @@ import "../../styles/hud.css";
 const PlayerHUD = () => {
     const { gameState } = useGame();
 
-    /**
-     * Get HP bar color based on health percentage
-     */
-    const getHpColor = () => {
+    const getHpColorClass = () => {
         const percentage = (gameState.hp / gameState.maxHp) * 100;
         if (percentage > 70) return "success";
         if (percentage > 30) return "warning";
@@ -24,15 +21,15 @@ const PlayerHUD = () => {
 
                 {/* HP Bar */}
                 <div className="hud-hp">
-                    <div className="d-flex justify-content-between small mb-1">
+                    <div className="label-row">
                         <span>❤️ Health</span>
                         <span>
                             {gameState.hp}/{gameState.maxHp}
                         </span>
                     </div>
-                    <div className="progress" style={{ height: "16px" }}>
+                    <div className="hud-hp-bar-container">
                         <div
-                            className={`progress-bar bg-${getHpColor()}`}
+                            className={`hud-hp-bar ${getHpColorClass()}`}
                             style={{
                                 width: `${(gameState.hp / gameState.maxHp) * 100}%`,
                             }}

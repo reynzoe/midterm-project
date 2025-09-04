@@ -44,4 +44,5 @@ const InventoryDisplay = ({ inventory }) => {
     );
 };
 
+
 export default InventoryDisplay;
