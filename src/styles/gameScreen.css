@@ -124,7 +124,7 @@
 }
 
 .game-screen.ending-gameover {
-    background: url("/startbg.png") no-repeat center center fixed;
+    background: url("/gameover.png") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;
@@ -140,7 +140,7 @@
 }
 
 .game-screen.ending-default {
-    background: url("/startbg.png") no-repeat center center fixed;
+    background: url("/default.jpeg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
 }

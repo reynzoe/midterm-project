@@ -59,13 +59,23 @@ const GameScreen = () => {
     }
 
     // Apply ending background class when game is ended
-    const gameScreenClass = gameState.gameEnded ?
-        `game-screen ${getEndingClass()}` :
-        "game-screen";
+    const gameScreenClass = gameState.gameEnded
+        ? `game-screen ${getEndingClass()}`
+        : "game-screen";
+
+    const backgroundStyle = currentStory.image
+        ? {
+            backgroundImage: `url(${currentStory.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat"
+        }
+        : {};
+
 
     return (
-        <div className={gameScreenClass}>
-            {/* HUD */}
+        <div className={gameScreenClass} style={backgroundStyle}>
+        {/* HUD */}
             <div className="hud">
                 <PlayerHUD />
             </div>
@@ -82,6 +92,9 @@ const GameScreen = () => {
 
             {/* Story content */}
             <div className="story-card">
+                {/* Show scene image if available */}
+
+
                 <div className="story-text">
                     <p>{displayedText}</p>
                     {/* Skip Button - Only show when typing is not complete */}
