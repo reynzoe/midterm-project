@@ -4,11 +4,11 @@
     min-height: 150px; /* Adjust based on your dialogue length + choices */
     transition: all 3s ease-in-out;
     position: fixed;
-    bottom: 140px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%; /* Adjust width as you like */
-    max-width: 800px; /* Prevent it from being too wide */
+    width: 80%; /* Adjust width as you like */
+    max-width: 1500px; /* Prevent it from being too wide */
     background: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
     color: white;
     padding: 20px;

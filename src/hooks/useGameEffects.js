@@ -26,16 +26,13 @@ export const useGameEffects = () => {
             const effects = currentStory.onArrive;
             let message = '';
 
-            if (effects.addItem) {
-                message = `✨ Found: ${effects.addItem}`;
-            } else if (effects.takeDamage) {
+            if (effects.takeDamage) {
                 message = `💔 Lost ${effects.takeDamage} HP`;
             }
 
             if (message) {
                 setEffectMessage(message);
                 setShowEffect(true);
-                // Auto-hide after 3 seconds
             }
 
             applyNodeEffects(gameState.currentNode, effects);

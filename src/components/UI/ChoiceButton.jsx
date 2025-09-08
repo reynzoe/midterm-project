@@ -29,12 +29,7 @@ const ChoiceButton = ({ choice, onChoiceClick, disabled = false }) => {
      * Get button style based on choice type
      */
     const getButtonClass = () => {
-        let baseClass = 'btn mb-2';
-
-        if (choice.requires || choice.requiresAll) {
-            return `${baseClass} btn-success`; // Green for special choices
-        }
-        return `${baseClass} btn-outline-danger`; // Yellow for normal choices
+        return "choice-button"; // force your retro style
     };
 
     // Don't render if choice should be hidden
@@ -49,19 +44,6 @@ const ChoiceButton = ({ choice, onChoiceClick, disabled = false }) => {
             disabled={disabled}
         >
             {choice.text}
-
-            {/* Show required items as badges */}
-            {choice.requires && (
-                <span className="badge bg-light text-dark ms-2">
-          Needs: {choice.requires}
-        </span>
-            )}
-
-            {choice.requiresAll && (
-                <span className="badge bg-light text-dark ms-2">
-          Needs: {choice.requiresAll.join(', ')}
-        </span>
-            )}
         </button>
     );
 };

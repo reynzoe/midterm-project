@@ -9,6 +9,27 @@
     flex-direction: column;
     align-items: center;
 }
+.playagain-btn {
+    width: 220px;      /* fixed width */
+    min-height: 60px;  /* enough space for 2-3 lines */
+    padding: 8px;
+
+    font-size: 17px;
+    line-height: 1.3;
+    font-family: 'Press Start 2P', monospace; /* retro font */
+
+    background-color: #0d0d0d;
+    border: 2px solid #ff0000;
+    color: #ff4c4c;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.playagain-btn:hover {
+    background-color: #ff0000;
+    color: #0d0d0d;
+    box-shadow: 0 0 6px #ff0000;
+}
 
 /* HUD Section */
 .hud {
@@ -53,26 +74,47 @@
     margin-bottom: 20px;
 }
 
-/* Choices Container */
-.choices-container {
-    margin-top: 20px;
-}
+/* Choices container - force 3 columns */
 
 .choices-title {
-    font-size: 12px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 14px;
     color: #ff4c4c;
 }
+.choices-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    max-width: 700px; /* keeps things from stretching too wide */
+    margin-left: auto;
+    margin-right: auto; /* centers the whole grid */
+    gap: 12px;
+    justify-items: center;
+}
 
-/* Buttons */
+
+/* Uniform Choice Buttons */
 .choice-button {
-    background-color: #0d0d0d;
-    border: 2px solid #ff0000; /* thinner border */
-    color: #ff4c4c;
-    padding: 6px 12px; /* smaller padding */
-    margin: 4px;
-    font-size: 12px; /* smaller text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 220px;      /* fixed width */
+    min-height: 60px;  /* enough space for 2-3 lines */
+    padding: 8px;
+
+    font-size: 12px;
+    line-height: 1.3;
+    font-family: 'Press Start 2P', monospace; /* retro font */
     text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal; /* allow wrapping */
+
+    background-color: #0d0d0d;
+    border: 2px solid #ff0000;
+    color: #ff4c4c;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
@@ -80,7 +122,7 @@
 .choice-button:hover {
     background-color: #ff0000;
     color: #0d0d0d;
-    box-shadow: 0px 0px 6px #ff0000; /* smaller glow */
+    box-shadow: 0 0 6px #ff0000;
 }
 
 /* Ending Title */

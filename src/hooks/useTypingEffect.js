@@ -1,7 +1,7 @@
 // hooks/useTypingEffect.js
 import { useState, useEffect, useCallback } from 'react'; // <-- Add useCallback
 
-const useTypingEffect = (text, speed = 50) => {
+const useTypingEffect = (text, speed = 30) => {
     const [displayedText, setDisplayedText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTypingComplete, setIsTypingComplete] = useState(false);

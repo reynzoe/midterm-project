@@ -13,7 +13,7 @@ const GameScreen = () => {
     const { currentStory, effectMessage, showEffect, hideEffect } = useGameEffects();
 
     const fullStoryText = currentStory ? currentStory.text.split("\n").join(" ") : '';
-    const { displayedText, isTypingComplete, skipTyping } = useTypingEffect(fullStoryText, 30);
+    const { displayedText, isTypingComplete, skipTyping } = useTypingEffect(fullStoryText, 45);
 
     const getEndingClass = () => {
         if (!currentStory) return "ending-default";
@@ -107,24 +107,26 @@ const GameScreen = () => {
 
                 {/* Game Choices - only show when typing is complete and game not ended */}
                 {!gameState.gameEnded && currentStory.choices && isTypingComplete && (
-                    <div className="choices-container fade-in">
-                        <h6 className="text-warning mb-3">⚔️ What do you do?</h6>
-                        {currentStory.choices.map((choice, index) => (
-                            <ChoiceButton
-                                key={index}
-                                choice={choice}
-                                onChoiceClick={handleChoice}
-                                disabled={gameState.hp <= 0}
-                            />
-                        ))}
-                    </div>
+                    <>
+                        <h6 className="choices-title text-warning mb-3">⚔️ What do you do?</h6>
+                        <div className="choices-container fade-in">
+                            {currentStory.choices.map((choice, index) => (
+                                <ChoiceButton
+                                    key={index}
+                                    choice={choice}
+                                    onChoiceClick={handleChoice}
+                                    disabled={gameState.hp <= 0}
+                                />
+                            ))}
+                        </div>
+                    </>
                 )}
 
                 {/* Game Over / Ending - only show when typing is complete */}
                 {gameState.gameEnded && isTypingComplete && (
                     <div className="ending-screen">
                         <h3 className="ending-title">{getEndingTitle()}</h3>
-                        <button onClick={resetGame} className="choice-button">
+                        <button onClick={resetGame} className="playagain-btn">
                              PLAY AGAIN
                         </button>
                     </div>
