@@ -84,7 +84,7 @@ const GameScreen = () => {
             {showEffect && (
                 <div className="effect-box">
                     <strong>{effectMessage}</strong>
-                    <button onClick={hideEffect} className="choice-button">
+                    <button onClick={hideEffect} className="hp-notif">
                         ✖ Close
                     </button>
                 </div>

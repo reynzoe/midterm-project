@@ -132,6 +132,12 @@
     text-shadow: 2px 2px 0px #0d0d0d;
 }
 
+.hp-notif{
+    background-color: #ff0000;
+    color: #0d0d0d;
+    box-shadow: 0 0 6px #ff0000;
+}
+
 .inventory-container {
     position: fixed;
     bottom: 0;
