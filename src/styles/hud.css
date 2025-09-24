@@ -1,82 +1,19 @@
-/* HUD container pinned at left */
-.hud-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    top: 0;
-    width: 260px; /* Width of the HUD box */
-    height : 240px;
-    display: flex;
-    flex-direction: column; /* Stack HUD + inventory vertically */
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem;
-    background: url('path/to/retro_bg_texture.png') repeat; /* Optional texture */
-    background-color: rgba(0, 0, 0, 0.9);
-    border-right: 4px solid #4a4a4a; /* Thicker, blocky border on the right */
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5); /* Shadow to separate from game area */
-    font-family: 'Press Start 2P', monospace;
-    color: #fff;
-    z-index: 1000;
-    image-rendering: pixelated;
-}
-
-/* Player info */
-.hud-player {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    margin-bottom: 2rem; /* Space before inventory */
-}
-
+/* Uniform pixel font across HUD */
+.hud-inventory,
+.hud-label,
+.hud-items,
+.hud-item,
+.hud-empty,
 .hud-name {
-    font-size: 1rem;
-    color: #aaddff;
-    text-shadow: 1px 1px 0 #000;
-    margin-bottom: 0;
+    font-family: "Press Start 2P", "Pixel Emulator", monospace; /* example pixel fonts */
+    image-rendering: pixelated; /* keep crisp look */
 }
-
-/* HP Bar */
-.hud-hp {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    width: 100%; /* Full width of the container */
-}
-
-.hud-hp .label-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: #fff;
-    text-shadow: 1px 1px 0 #000;
-}
-
-.hud-hp-bar-container {
-    height: 18px;
-    background-color: #333;
-    border: 2px solid #555;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.hud-hp-bar {
-    height: 100%;
-    background-color: #ff0000;
-    transition: width 0.3s ease-in-out;
-    image-rendering: pixelated;
-}
-.hud-hp-bar.success { background-color: #00aa00; }
-.hud-hp-bar.warning { background-color: #ffaa00; }
-.hud-hp-bar.danger { background-color: #cc0000; }
 
 /* Inventory */
 .hud-inventory {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align everything left */
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -87,10 +24,23 @@
     margin-bottom: 0.5rem;
 }
 
+/* Player Name Styling */
+.hud-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff; /* White */
+    text-shadow:
+            2px 2px 0 #000,
+            -2px 2px 0 #000,
+            2px -2px 0 #000,
+            -2px -2px 0 #000; /* Pixel-style outline */
+    margin-bottom: 0.8rem;
+}
+
 .hud-items {
     display: grid;
-    grid-template-columns: repeat(4, 50px); /* Adjusted for box fit */
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 8px; /* even spacing between boxes */
     padding: 6px;
     background-color: rgba(0, 0, 0, 0.7);
     border: 2px solid #555;
@@ -99,8 +49,8 @@
 }
 
 .hud-item {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     background: #2a2a2a;
     border: 1px solid #777;
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
@@ -111,14 +61,23 @@
     font-size: 0.7rem;
     color: #fff;
     text-shadow: 1px 1px 0 #000;
-    position: relative;
-    image-rendering: pixelated;
+    overflow: hidden;
+    text-align: center;
+    padding: 2px;
 }
 
 .hud-item-icon {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     line-height: 1;
     margin-bottom: 2px;
+}
+
+.hud-item-label {
+    font-size: 0.65rem;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .hud-empty {

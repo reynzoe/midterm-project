@@ -3,28 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { GameProvider, useGame } from './contexts/GameContext';
 import StartScreen from './components/Game/StartScreen';
 import GameScreen from './components/Game/GameScreen';
+import ThemeMusic from './components/Music/ThemeMusic'; // 👈 import here
 
-/**
- * Game content component that renders based on game state
- */
 const GameContent = () => {
     const { gameState } = useGame();
 
-    // Show start screen if game hasn't started
     if (!gameState.gameStarted) {
         return <StartScreen />;
     }
 
-    // Show main game screen
     return <GameScreen />;
 };
 
-/**
- * Main App component with game provider
- */
 const App = () => {
     return (
         <GameProvider>
+            {/* 🎵 Music runs for the whole app */}
+            <ThemeMusic />
+
             <GameContent />
         </GameProvider>
     );
