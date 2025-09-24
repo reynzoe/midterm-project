@@ -137,14 +137,16 @@ export const GameProvider = ({ children }) => {
      * Check if player has item
      */
     const hasItem = useCallback((item) => {
-        return gameState.inventory.includes(item);
+        if (!item) return false;
+        // Convert both to lowercase for consistent checking
+        return gameState.inventory.some(invItem => invItem.toLowerCase() === item.toLowerCase());
     }, [gameState.inventory]);
 
-    /**
-     * Check if player has all items
-     */
     const hasAllItems = useCallback((items) => {
-        return items.every(item => gameState.inventory.includes(item));
+        if (!items || !Array.isArray(items)) return false;
+        return items.every(item =>
+            gameState.inventory.some(invItem => invItem.toLowerCase() === item.toLowerCase())
+        );
     }, [gameState.inventory]);
 
     return (

@@ -9,6 +9,20 @@
     flex-direction: column;
     align-items: center;
 }
+
+.story-card {
+    transition: opacity 1.4s ease-in-out;
+}
+
+.story-card.fade-in {
+    opacity: 1;
+}
+
+.story-card.fade-out {
+    opacity: 0;
+}
+
+
 .playagain-btn {
     width: 220px;      /* fixed width */
     min-height: 60px;  /* enough space for 2-3 lines */
@@ -169,9 +183,16 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+.game-screen.ending-corrupted {
+    background: url("/corrupted.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    background-blend-mode: multiply;
+    background-color: rgba(255, 215, 0, 0.3); /* Gold tint for legend */
+}
 
 .game-screen.ending-legend {
-    background: url("/startbg.png") no-repeat center center fixed;
+    background: url("/default.jpeg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;

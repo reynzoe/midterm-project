@@ -64,12 +64,14 @@
       },
       {
         "text": "You have no garlic! Fight it with your bolo!",
-        "to": "fightWakwakNoGarlic"
+        "to": "fightWakwakNoGarlic",
+        "hideIfHas": "Bawang"
       },
       {
         "text": "This isn't a Manananggal. The salt is useless here.",
         "to": "fightWakwakNoGarlic",
-        "requires": "Asin"
+        "requires": "Asin",
+        "hideIfHas": "Bawang"
       }
     ]
   },
@@ -183,7 +185,8 @@
       },
       {
         "text": "You don't have salt! Hack at it with your bolo!",
-        "to": "badEnding_noSalt"
+        "to": "badEnding_noSalt",
+        "hideIfHas": "Asin"
       },
       {
         "text": "Touch the torso with your bare hand… something compels you.",

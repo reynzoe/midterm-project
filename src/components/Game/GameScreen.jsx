@@ -1,5 +1,5 @@
 // components/GameScreen.js
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useGame } from "../../contexts/GameContext";
 import { useGameEffects } from "../../hooks/useGameEffects";
 import useTypingEffect from "../../hooks/useTypingEffect";
@@ -12,7 +12,9 @@ const GameScreen = () => {
     const { gameState, navigateToNode, resetGame } = useGame();
     const { currentStory, effectMessage, showEffect, hideEffect } = useGameEffects();
 
-    const fullStoryText = currentStory ? currentStory.text.split("\n").join(" ") : '';
+    const [fade, setFade] = useState(false);
+
+    const fullStoryText = currentStory ? currentStory.text.split("\n").join(" ") : "";
     const { displayedText, isTypingComplete, skipTyping } = useTypingEffect(fullStoryText, 45);
 
     const getEndingClass = () => {
@@ -23,13 +25,18 @@ const GameScreen = () => {
         if (text.includes("legend")) return "ending-legend";
         if (text.includes("game over")) return "ending-gameover";
         if (text.includes("coward")) return "ending-coward";
+        if (text.includes("corrupted")) return "ending-corrupted";
 
         return "ending-default";
     };
 
     const handleChoice = (choice) => {
-        hideEffect();
-        navigateToNode(choice.to);
+        setFade(true); // fade out current content
+        setTimeout(() => {
+            hideEffect();
+            navigateToNode(choice.to);
+            setFade(false); // fade back in
+        }, 400); // match CSS transition duration
     };
 
     const getEndingTitle = () => {
@@ -68,14 +75,13 @@ const GameScreen = () => {
             backgroundImage: `url(${currentStory.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
         }
         : {};
 
-
     return (
         <div className={gameScreenClass} style={backgroundStyle}>
-        {/* HUD */}
+            {/* HUD */}
             <div className="hud">
                 <PlayerHUD />
             </div>
@@ -91,10 +97,7 @@ const GameScreen = () => {
             )}
 
             {/* Story content */}
-            <div className="story-card">
-                {/* Show scene image if available */}
-
-
+            <div className={`story-card ${fade ? "fade-out" : "fade-in"}`}>
                 <div className="story-text">
                     <p>{displayedText}</p>
                     {/* Skip Button - Only show when typing is not complete */}
@@ -127,7 +130,7 @@ const GameScreen = () => {
                     <div className="ending-screen">
                         <h3 className="ending-title">{getEndingTitle()}</h3>
                         <button onClick={resetGame} className="playagain-btn">
-                             PLAY AGAIN
+                            PLAY AGAIN
                         </button>
                     </div>
                 )}
