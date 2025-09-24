@@ -1,7 +1,7 @@
 {
   "start": {
     "text": "You arrive at the dimly lit town of San Gubat. The air is heavy with fear. Who do you seek for information first?",
-    "image": "/images/start.jpg",
+    "image": "/images/start.png",
     "choices": [
       {
         "text": "Find the old Albularyo (Healer) at the edge of town.",
@@ -30,7 +30,7 @@
   },
   "askCaptain": {
     "text": "'My best men have vanished,' the captain says grimly, handing you a braid of garlic. 'We believe it's a Wakwak, a different kind of horror. This might keep it at bay.' You've gained Bawang.",
-    "image": "/public/Coward.png",
+    "image": "/images/captain.png",
     "onArrive": { "addItem": "Bawang" },
     "choices": [
       {
@@ -41,7 +41,7 @@
   },
   "oldChurch_entry": {
     "text": "The ancient church is silent, its stone walls covered in moss. Dust motes dance in the single moonbeam piercing the roof. Do you investigate the crumbling bell tower or the desecrated altar?",
-    "image": "/public/Coward.png",
+    "image": "/images/oldchurch.png",
     "choices": [
       {
         "text": "Climb the creaking stairs to the bell tower.",
@@ -55,7 +55,7 @@
   },
   "bellTower": {
     "text": "In the belfry, a creature with ragged wings and sharp talons screeches! It's a Wakwak, feasting on a goat. It turns its glowing red eyes on you!",
-    "image": "/public/Coward.png",
+    "image": "/images/bellTower.png",
     "choices": [
       {
         "text": "Thrust the garlic braid at it!",
@@ -75,7 +75,7 @@
   },
   "useGarlicOnWakwak": {
     "text": "The Wakwak recoils from the pungent garlic, giving you an opening! You slash with your bolo, wounding its wing. It shrieks and flies off into the night, dropping something shiny.",
-    "image": "/public/Coward.png",
+    "image": "/images/wakwakGarlic.png",
     "onArrive": { "addItem": "Agimat" },
     "choices": [
       {
@@ -86,7 +86,7 @@
   },
   "fightWakwakNoGarlic": {
     "text": "Without the garlic to weaken it, the Wakwak is too fast and ferocious. It claws you deeply before you can land a solid blow. You lose 30 HP and it escapes.",
-    "image": "/public/Coward.png",
+    "image": "/images/noGarlic.png",
     "onArrive": { "takeDamage": 30 },
     "choices": [
       {
@@ -97,7 +97,7 @@
   },
   "altar": {
     "text": "The altar is overturned. Behind it, you find a small, intricately carved amulet throbbing with a faint warmth. It feels protective. You've found an Agimat.",
-    "image": "/public/Coward.png",
+    "image": "/images/altars.png",
     "onArrive": { "addItem": "Agimat" },
     "choices": [
       {
@@ -108,7 +108,7 @@
   },
   "riceFields_entry": {
     "text": "The moon hangs high over the vast, dark rice paddies. The air is still, save for the chirping of crickets. In the distance, you hear the faint sound of a baby crying.",
-    "image": "/public/Coward.png",
+    "image": "/images/ricefields.png",
     "choices": [
       {
         "text": "It's a trap. A Tiyanak. Ignore it and press on.",
@@ -122,7 +122,7 @@
   },
   "investigateTiyanak": {
     "text": "You follow the crying to a small thicket. As you part the leaves, the crying stops. A small, monstrous creature with sharp teeth leaps out, biting your leg before scurrying away! It was a Tiyanak!",
-    "image": "/public/Coward.png",
+    "image": "/images/tiyanak.png",
     "choices": [
       {
         "text": "You fell for the oldest trick in the book! (Lose 25 HP)",
@@ -138,7 +138,7 @@
   },
   "tiyanakDamage": {
     "text": "The bite is painful and you feel a strange weakness spreading. You lose 25 HP. You curse your foolishness and continue towards the ominous Balete tree.",
-    "image": "/public/Coward.png",
+    "image": "/images/balete.png",
     "onArrive": { "takeDamage": 25 },
     "choices": [
       {
@@ -149,7 +149,7 @@
   },
   "baleteTree_approach": {
     "text": "You've reached the heart of the darkness: a massive, ancient Balete tree with thick, hanging roots. You can hear a sickening squelching sound from above. The Manananggal is here. This is the final battle.",
-    "image": "/public/Coward.png",
+    "image": "/images/manananggal.png",
     "choices": [
       {
         "text": "Charge the tree and attack the creature head-on!",
@@ -164,7 +164,7 @@
   "finalFight_direct": {
     "text": "You attack the flying creature directly, but it's too agile in the air. It swoops down, its claws tearing at you. Your bravery costs you dearly. You lose 50 HP.",
     "onArrive": { "takeDamage": 50 },
-    "image": "/public/Coward.png",
+    "image": "/images/finalfight.png",
     "choices": [
       {
         "text": "You're heavily wounded! You must find its lower half!",
@@ -174,7 +174,7 @@
   },
   "finalFight_search": {
     "text": "You ignore the airborne horror and frantically search the base of the Balete tree. Hidden among the gnarled roots, you find it: the creature's vulnerable lower torso, standing motionless.",
-    "image": "/public/Coward.png",
+    "image": "/images/lowerBody.png",
     "choices": [
       {
         "text": "Pour the holy salt into the torso!",

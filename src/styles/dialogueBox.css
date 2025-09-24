@@ -1,22 +1,5 @@
 /* ... existing styles ... */
 
-.story-card {
-    min-height: 150px; /* Adjust based on your dialogue length + choices */
-    transition: all 3s ease-in-out;
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%; /* Adjust width as you like */
-    max-width: 1500px; /* Prevent it from being too wide */
-    background: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
-    color: white;
-    padding: 20px;
-    border-radius: 15px 15px 0 0; /* Rounded top corners */
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6);
-    z-index: 1000; /* Ensure it stays above other UI */
-}
-
 .fade-in {
     opacity: 0;
     animation: fadeIn 2s forwards;
