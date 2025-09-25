@@ -22,7 +22,7 @@ const PlayerHUD = () => {
                 {/* HP Bar */}
                 <div className="hud-hp">
                     <div className="label-row">
-                        <span>❤️ Health   </span>
+                        <span>❤️ Health  </span>
                         <span>
                             {gameState.hp}/{gameState.maxHp}
                         </span>

@@ -31,13 +31,20 @@ const GameScreen = () => {
     };
 
     const handleChoice = (choice) => {
-        setFade(true); // fade out current content
+        setFade(true); // start fade-out
+
+        // Wait until fade-out is done before navigating
         setTimeout(() => {
             hideEffect();
             navigateToNode(choice.to);
-            setFade(false); // fade back in
-        }, 400); // match CSS transition duration
+
+            // Wait one animation frame before fading back in
+            requestAnimationFrame(() => {
+                setFade(false);
+            });
+        }, 600); // match your fade-out duration (make sure CSS matches this)
     };
+
 
     const getEndingTitle = () => {
         if (!currentStory) return " THE END ";

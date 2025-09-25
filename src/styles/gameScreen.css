@@ -10,16 +10,18 @@
     align-items: center;
 }
 
+/* Smooth fade for story-card */
 .story-card {
-    transition: opacity 1.4s ease-in-out;
-}
-
-.story-card.fade-in {
     opacity: 1;
+    transition: opacity 0.6s ease-in-out;
 }
 
 .story-card.fade-out {
     opacity: 0;
+}
+
+.story-card.fade-in {
+    opacity: 1;
 }
 
 
@@ -184,7 +186,7 @@
     background-repeat: no-repeat;
 }
 .game-screen.ending-corrupted {
-    background: url("/corrupted.jpg") no-repeat center center fixed;
+    background: url("/images/corrupted.jpg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;
@@ -192,7 +194,7 @@
 }
 
 .game-screen.ending-legend {
-    background: url("/default.jpeg") no-repeat center center fixed;
+    background: url("/images/default.jpeg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;
@@ -200,7 +202,7 @@
 }
 
 .game-screen.ending-gameover {
-    background: url("/gameover.png") no-repeat center center fixed;
+    background: url("/images/gameover.png") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;
@@ -208,7 +210,7 @@
 }
 
 .game-screen.ending-coward {
-    background: url("/Coward.png") no-repeat center center fixed;
+    background: url("/images/cowards.png") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
     background-blend-mode: multiply;
@@ -216,7 +218,7 @@
 }
 
 .game-screen.ending-default {
-    background: url("/default.jpeg") no-repeat center center fixed;
+    background: url("/images/default.jpeg") no-repeat center center fixed;
     background-size: cover;
     min-height: 100vh;
 }

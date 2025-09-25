@@ -1,6 +1,6 @@
 /* Retro horror start screen */
 .start-screen {
-    background: url("/startbg.png") no-repeat center center fixed;
+    background: url("/images/startbg.png") no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     font-family: 'Press Start 2P', monospace;
