@@ -16,14 +16,13 @@
     max-width: 400px;
 }
 
-/* Title like Resident Evil */
 .start-title {
-    font-size: 6.3rem;          /* bigger */
-    font-weight: 900;         /* bold like RE */
-    color: #ffffff;           /* darker blood red */
-    letter-spacing: 2px;      /* spaced out letters */
+    font-size: 6.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
     margin-bottom: 2rem;
-    text-transform: uppercase; /* force ALL CAPS */
+    text-transform: uppercase;
 }
 
 /* Input styling */
