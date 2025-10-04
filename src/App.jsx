@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { GameProvider, useGame } from './contexts/GameContext';
+import { GameProvider, useGame } from './Contexts/GameContext';
 import StartScreen from './components/Game/StartScreen';
 import GameScreen from './components/Game/GameScreen';
 import ThemeMusic from './components/Music/ThemeMusic'; // 👈 import here
