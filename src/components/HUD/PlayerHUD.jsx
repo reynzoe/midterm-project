@@ -1,5 +1,5 @@
 import React from "react";
-import { useGame } from "../../contexts/GameContext";
+import { useGame } from "../../Contexts/GameContext";
 import InventoryDisplay from "./InventoryDisplay";
 import "../../styles/hud.css";
 

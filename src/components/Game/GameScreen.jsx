@@ -1,6 +1,6 @@
 // components/GameScreen.js
 import React, { useState } from "react";
-import { useGame } from "../../contexts/GameContext";
+import { useGame } from "../../Contexts/GameContext";
 import { useGameEffects } from "../../hooks/useGameEffects";
 import useTypingEffect from "../../hooks/useTypingEffect";
 import PlayerHUD from "../HUD/PlayerHUD";

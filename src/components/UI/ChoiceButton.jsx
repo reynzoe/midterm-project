@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGame } from '../../contexts/GameContext';
+import { useGame } from '../../Contexts/GameContext';
 
 const ChoiceButton = ({ choice, onChoiceClick, disabled = false }) => {
     const { hasItem, hasAllItems } = useGame();

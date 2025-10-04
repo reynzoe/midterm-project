@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGame } from '../contexts/GameContext';
+import { useGame } from '../Contexts/GameContext';
 import storyData from '../data/story.json'; // ✅ Import the JSON file directly
 
 /**

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGame } from '../../contexts/GameContext';
+import { useGame } from '../../Contexts/GameContext';
 import '../../styles/startScreen.css';
 
 const StartScreen = () => {
